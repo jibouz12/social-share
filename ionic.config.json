@@ -1,0 +1,8 @@
+{
+  "name": "social share",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "23159875"
+}
