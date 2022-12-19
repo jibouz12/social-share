@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { catchError, EMPTY, take, tap } from 'rxjs';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       loginEmail: [null, [Validators.required, Validators.email]],
       loginPassword: [null, Validators.required],
-    })
+    });
   }
 
 /////////////////////

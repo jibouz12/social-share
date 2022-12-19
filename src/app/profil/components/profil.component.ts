@@ -26,20 +26,9 @@ export class ProfilComponent implements OnInit {
               private GPSService : GPSService) { }
 
   ngOnInit() {
-    this.tiktok = this.authService.getUserTiktok();
+    this.tiktok = 'https://tiktok.com/' + this.authService.getUserTiktok();
     this.insta = 'https://instagram.com/' + this.authService.getUserInsta();
-    this.snap = this.authService.getUserSnap();
-
-
-    this.user = this.authService.getUserId();
-    this.GPS$ = this.GPSService.getGPSByUserId(this.user);
-
+    this.snap = 'https://snapchat.com/' + this.authService.getUserSnap();
   }
 
-  createGPS() {
-    this.latitude = 1.2;
-    this.longitude = 5.14;
-
-    this.GPSService.createGPS(this.latitude, this.longitude).subscribe()
-  }
 }

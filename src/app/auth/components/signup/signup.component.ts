@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError, EMPTY, switchMap, take, tap } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+import { GPSService } from 'src/app/core/services/GPS.service';
 
 
 @Component({
@@ -15,9 +17,14 @@ export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
   errorMsg!: string;
 
+  latitude!: number;
+  longitude!: number;
+
   constructor(private formBuilder : FormBuilder,
               private auth : AuthService,
-              private router : Router) { }
+              private router : Router,
+              private geolocation: Geolocation,
+              private GPSService : GPSService) { }
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
@@ -26,7 +33,14 @@ export class SignupComponent implements OnInit {
       tiktok: [null],
       insta: [null],
       snap: [null]
-    })
+    });
+
+    this.geolocation.getCurrentPosition().then((resp) => {
+      this.latitude = resp.coords.latitude;
+      this.longitude = resp.coords.longitude;
+     }).catch((error) => {
+       console.log('Error getting location', error);
+     });
   }
 
 /////////////////////
@@ -42,6 +56,11 @@ export class SignupComponent implements OnInit {
     this.auth.createUser(email, password, tiktok, insta, snap).pipe(
       take(1),
       switchMap(() => this.auth.loginUser(email, password)),
+      tap(() => {    
+        this.GPSService.createGPS(this.latitude, this.longitude).pipe(
+          take(1)
+        ).subscribe();
+      }),
       tap(() => {
         this.router.navigate(['']);
       }),

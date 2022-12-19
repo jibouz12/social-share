@@ -29,9 +29,13 @@ getGPSByUserId(UserId : string) : Observable<GPS> {
 /// créer localisation
 createGPS(latitude : number, longitude : number) {
   return this.http.post<{ message: string }>(`${this.constants.protocol}://${this.constants.domain}/api/gps`, {latitude: latitude, longitude:longitude});
-
 }
 
+/////////////////
+/// modifier la localisation
+modifyGPS(latitude : number, longitude : number) {
+  return this.http.put<{ message: string }>(`${this.constants.protocol}://${this.constants.domain}/api/gps`, {latitude: latitude, longitude:longitude});
+}
 
 
 
