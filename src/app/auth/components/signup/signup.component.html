@@ -10,16 +10,8 @@
         <input type="password" class="form-control" id="signupPassword" formControlName="signupPassword">
       </div>
       <div class="form-group">
-        <label for="tiktok">Pseudo TikTok</label>
-        <input type="text" class="form-control" id="tiktok" formControlName="tiktok">
-      </div>
-      <div class="form-group">
         <label for="insta">Pseudo Instagram</label>
         <input type="text" class="form-control" id="insta" formControlName="insta">
-      </div>
-      <div class="form-group">
-        <label for="snap">Pseudo Snapchat</label>
-        <input type="text" class="form-control" id="snap" formControlName="snap">
       </div>
       <div class="bouton">
           <button type="submit" (click)="signUp()" [disabled]="signupForm.invalid">INSCRIPTION</button>

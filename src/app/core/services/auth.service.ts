@@ -11,9 +11,7 @@ import { Constants } from 'src/app/constants/constants';
     private userId = "";
     private authToken = "";
     private pseudo = "";
-    private tiktok = "";
     private insta = "";
-    private snap = "";
 
     constructor(private http: HttpClient,
                 private router: Router,
@@ -65,17 +63,6 @@ getUserPseudo(): string {
 }
 
 ////////////////////
-/// récupérer tiktok
-/// ( même principe que pour getToken() )
-getUserTiktok(): string {
-    if(localStorage.getItem("tik") != null) {
-        return localStorage.getItem("tik")!;
-    } else {
-        return this.tiktok;
-    }
-}
-
-////////////////////
 /// récupérer insta
 /// ( même principe que pour getToken() )
 getUserInsta(): string {
@@ -86,43 +73,29 @@ getUserInsta(): string {
     }
 }
 
-////////////////////
-/// récupérer snap
-/// ( même principe que pour getToken() )
-getUserSnap(): string {
-    if(localStorage.getItem("snap") != null) {
-        return localStorage.getItem("snap")!;
-    } else {
-        return this.snap;
-    }
-}
 
 ////////////////////////////////
 /// créer nouvel utilisateur
-createUser(email: string, password: string, tiktok: string, insta: string, snap: string) {
-    return this.http.post<{ message: string }>(`${this.constants.protocol}://${this.constants.domain}/api/auth/signup`, {email: email, password: password, tiktok: tiktok, insta: insta, snap: snap});
+createUser(email: string, password: string, insta: string) {
+    return this.http.post<{ message: string }>(`${this.constants.protocol}://${this.constants.domain}/api/auth/signup`, {email: email, password: password, insta: insta});
 }
 
 //////////////////////
 /// connection utilisateur
 /// + ajouter infos sécurisées dans le LS
 loginUser(email: string, password: string) {
-    return this.http.post<{ userId: string, token: string, pseudo: string, tiktok: string, insta: string, snap: string }>(`${this.constants.protocol}://${this.constants.domain}/api/auth/login`, {email: email, password: password}).pipe(
-        tap(({ userId, token, pseudo, tiktok, insta, snap }) => {
+    return this.http.post<{ userId: string, token: string, pseudo: string, insta: string }>(`${this.constants.protocol}://${this.constants.domain}/api/auth/login`, {email: email, password: password}).pipe(
+        tap(({ userId, token, pseudo, insta}) => {
             this.userId = userId;
             this.authToken = token;
             this.pseudo = pseudo;
-            this.tiktok = tiktok;
             this.insta = insta;
-            this.snap = snap;
         }),
         tap(() => {
             localStorage.setItem("xs", this.authToken + this.makeRandom(9, "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890,./;'-*&^%$#@!~`"));
             localStorage.setItem("xl", this.userId + this.makeRandom(6, "abcdefghijklmnopqrstuvwxyz1234567890"));
             localStorage.setItem("rs", this.pseudo + this.makeRandom(3, "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890"));
-            localStorage.setItem("tik", this.tiktok);
             localStorage.setItem("insta", this.insta);
-            localStorage.setItem("snap", this.snap);
         })
     );
 }

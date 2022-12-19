@@ -44,4 +44,6 @@ export class GpsComponent implements OnInit {
       take(1)
      ).subscribe();
   }
+
+  
 }

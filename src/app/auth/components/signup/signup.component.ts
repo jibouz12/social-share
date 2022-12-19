@@ -30,9 +30,7 @@ export class SignupComponent implements OnInit {
     this.signupForm = this.formBuilder.group({
       signupEmail: [null, [Validators.required, Validators.email]],
       signupPassword: [null, Validators.required],
-      tiktok: [null],
       insta: [null],
-      snap: [null]
     });
 
     this.geolocation.getCurrentPosition().then((resp) => {
@@ -50,10 +48,8 @@ export class SignupComponent implements OnInit {
   signUp() {
     const email = this.signupForm.get('signupEmail')!.value;
     const password = this.signupForm.get('signupPassword')!.value;
-    const tiktok = this.signupForm.get('tiktok')!.value;
     const insta = this.signupForm.get('insta')!.value;
-    const snap = this.signupForm.get('snap')!.value;
-    this.auth.createUser(email, password, tiktok, insta, snap).pipe(
+    this.auth.createUser(email, password, insta).pipe(
       take(1),
       switchMap(() => this.auth.loginUser(email, password)),
       tap(() => {    
