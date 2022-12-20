@@ -2,5 +2,5 @@
   <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <app-gps></app-gps>
+  <app-post *ngFor="let postElement of (post$ | async) as post"  [post]="postElement"></app-post>
 </ion-content>

@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
-import { GpsModule } from '../gps/gps.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -13,7 +13,7 @@ import { GpsModule } from '../gps/gps.module';
     CommonModule,
     FormsModule,
     Tab1PageRoutingModule,
-    GpsModule,
+    SharedModule
   ],
   declarations: [Tab1Page]
 })
