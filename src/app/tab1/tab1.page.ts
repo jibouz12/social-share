@@ -9,4 +9,11 @@ export class Tab1Page {
 
   constructor() {}
 
+  handleRefresh(event : any) {
+    setTimeout(() => {
+      window.location.reload();
+      event.target.complete();
+    }, 2000);
+  };
+
 }
