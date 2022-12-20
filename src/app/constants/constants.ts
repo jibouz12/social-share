@@ -5,6 +5,6 @@ import { Injectable } from '@angular/core';
 })
 
 export class Constants {
-    public protocol = "http";
+    public protocol = "https";
     public domain = "back-jibouz12.vercel.app";
 }
