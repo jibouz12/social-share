@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { catchError, EMPTY, take, tap } from 'rxjs';
 import { GPSService } from 'src/app/core/services/GPS.service';
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+import { SignupService } from 'src/app/core/services/signup.service';
 
 
 
@@ -25,11 +26,11 @@ export class LoginComponent implements OnInit {
               private auth : AuthService,
               private router: Router,
               private geolocation: Geolocation,
-              private GPSService : GPSService) { }
+              private GPSService : GPSService,
+              private signupService : SignupService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      loginEmail: [null, [Validators.required, Validators.email]],
       loginPassword: [null, Validators.required],
     });
 
@@ -45,7 +46,7 @@ export class LoginComponent implements OnInit {
 /// connection utilisateur
 /// --> redirection vers feed
   login() {
-    const email = this.loginForm.get('loginEmail')!.value;
+    const email = this.signupService.getEmail();
     const password = this.loginForm.get('loginPassword')!.value;
     this.auth.loginUser(email, password).pipe(
       take(1),
@@ -62,12 +63,6 @@ export class LoginComponent implements OnInit {
         return EMPTY;
       })
     ).subscribe();
-  }
-
-////////////////////
-/// lien vers la page d'inscription
-  goToSignup() {
-    this.router.navigateByUrl("auth/signup");
   }
 
 

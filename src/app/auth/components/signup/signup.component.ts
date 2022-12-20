@@ -5,6 +5,7 @@ import { catchError, EMPTY, switchMap, take, tap } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 import { GPSService } from 'src/app/core/services/GPS.service';
+import { SignupService } from 'src/app/core/services/signup.service';
 
 
 @Component({
@@ -13,25 +14,24 @@ import { GPSService } from 'src/app/core/services/GPS.service';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-
   signupForm!: FormGroup;
   errorMsg!: string;
 
   latitude!: number;
   longitude!: number;
 
+
+
   constructor(private formBuilder : FormBuilder,
               private auth : AuthService,
               private router : Router,
               private geolocation: Geolocation,
-              private GPSService : GPSService) { }
+              private GPSService : GPSService,
+              private signupService : SignupService) { }
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
-      signupEmail: [null, [Validators.required, Validators.email]],
-      signupPassword: [null, Validators.required],
       insta: [null, Validators.required],
-      pseudo: [null, Validators.required],
     });
 
     this.geolocation.getCurrentPosition().then((resp) => {
@@ -48,9 +48,9 @@ export class SignupComponent implements OnInit {
 /// --> + créer géolocalisation
 /// --> redirection vers feed
   signUp() {
-    const email = this.signupForm.get('signupEmail')!.value;
-    const password = this.signupForm.get('signupPassword')!.value;
-    const pseudo = this.signupForm.get('pseudo')!.value;
+    const email = this.signupService.getEmail();
+    const password = this.signupService.getPass();
+    const pseudo = this.signupService.getPseudo();
     const insta = this.signupForm.get('insta')!.value;
     this.auth.createUser(email, password, pseudo, insta).pipe(
       take(1),
