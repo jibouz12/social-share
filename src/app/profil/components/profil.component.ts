@@ -14,6 +14,7 @@ export class ProfilComponent implements OnInit {
 
   ngOnInit() {
     this.insta = 'https://instagram.com/' + this.authService.getUserInsta();
+
   }
 
 }

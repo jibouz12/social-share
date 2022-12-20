@@ -76,8 +76,8 @@ getUserInsta(): string {
 
 ////////////////////////////////
 /// créer nouvel utilisateur
-createUser(email: string, password: string, insta: string) {
-    return this.http.post<{ message: string }>(`${this.constants.protocol}://${this.constants.domain}/api/auth/signup`, {email: email, password: password, insta: insta});
+createUser(email: string, password: string, pseudo: string, insta: string) {
+    return this.http.post<{ message: string }>(`${this.constants.protocol}://${this.constants.domain}/api/auth/signup`, {email: email, password: password, pseudo: pseudo, insta: insta});
 }
 
 //////////////////////

@@ -30,7 +30,8 @@ export class SignupComponent implements OnInit {
     this.signupForm = this.formBuilder.group({
       signupEmail: [null, [Validators.required, Validators.email]],
       signupPassword: [null, Validators.required],
-      insta: [null],
+      insta: [null, Validators.required],
+      pseudo: [null, Validators.required],
     });
 
     this.geolocation.getCurrentPosition().then((resp) => {
@@ -44,16 +45,18 @@ export class SignupComponent implements OnInit {
 /////////////////////
 /// s'inscrire (créer nouvel utilisateur)
 /// --> + fonction connection
+/// --> + créer géolocalisation
 /// --> redirection vers feed
   signUp() {
     const email = this.signupForm.get('signupEmail')!.value;
     const password = this.signupForm.get('signupPassword')!.value;
+    const pseudo = this.signupForm.get('pseudo')!.value;
     const insta = this.signupForm.get('insta')!.value;
-    this.auth.createUser(email, password, insta).pipe(
+    this.auth.createUser(email, password, pseudo, insta).pipe(
       take(1),
       switchMap(() => this.auth.loginUser(email, password)),
       tap(() => {    
-        this.GPSService.createGPS(this.latitude, this.longitude).pipe(
+        this.GPSService.createGPS(this.latitude, this.longitude, pseudo, insta).pipe(
           take(1)
         ).subscribe();
       }),

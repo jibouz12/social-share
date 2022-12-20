@@ -11,6 +11,7 @@ import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
     HttpClientModule,
     CoreModule,
     AuthModule,
+    SharedModule,
   ],
 
   providers: [

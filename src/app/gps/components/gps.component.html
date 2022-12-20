@@ -1,2 +1,1 @@
-<p>{{ latitude }}</p>
-<p>{{ longitude }}</p>
+<app-post *ngFor="let postElement of (post$ | async) as post"  [post]="postElement"></app-post>

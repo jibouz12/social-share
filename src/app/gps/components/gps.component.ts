@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 import { GPSService } from 'src/app/core/services/GPS.service';
-import { interval } from 'rxjs';
+import { interval, Observable, tap } from 'rxjs';
 import { take } from 'rxjs/internal/operators/take';
+import { GPS } from 'src/app/core/models/GPS.model';
 
 
 @Component({
@@ -13,9 +14,13 @@ import { take } from 'rxjs/internal/operators/take';
 export class GpsComponent implements OnInit {
   latitude!: number;
   longitude!: number;
+  pseudo!: string;
+  insta!: string;
+
+  post$!: Observable<GPS[]>;
 
   constructor(private geolocation: Geolocation,
-              private GPSService : GPSService) { }
+              private GPSService : GPSService ) { }
 
   ngOnInit() {
 ///////////
@@ -25,6 +30,10 @@ export class GpsComponent implements OnInit {
     interval(300000).subscribe(() => {
       this.getLocation();
     })
+
+
+
+    
  
   }
 
@@ -41,9 +50,16 @@ export class GpsComponent implements OnInit {
      });
 
      this.GPSService.modifyGPS(this.latitude, this.longitude).pipe(
-      take(1)
+      take(1),
+      tap(() => {
+        this.post$ = this.GPSService.closeGPS(this.latitude, this.longitude);
+      })
      ).subscribe();
   }
+
+
+////////////////////////////
+  
 
   
 }
