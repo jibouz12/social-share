@@ -1,8 +1,7 @@
 <div class="container">
   <form [formGroup]="loginForm">
     <div class="form-group">
-      <label for="loginPassword">Mot de Passe</label>
-      <input type="password" class="form-control" id="loginPassword" formControlName="loginPassword">
+      <input placeholder="mot de passe" type="password" class="form-control" id="loginPassword" formControlName="loginPassword">
     </div>
     <div class="bouton">
         <button type="submit" (click)="login()" [disabled]="loginForm.invalid">CONNEXION</button>

@@ -1,10 +1,11 @@
-<form [formGroup]="signupForm">
-    <div class="form-group">
-      <label for="insta">Pseudo Instagram</label>
-      <input type="text" class="form-control" id="insta" formControlName="insta">
-    </div>
-    <div class="bouton">
-        <button type="submit" (click)="signUp()" [disabled]="signupForm.invalid">INSCRIPTION</button>
-    </div>
-</form>
+<div class="container">
+  <form [formGroup]="signupForm">
+      <div class="form-group">
+        <input placeholder="pseudo Instagram" type="text" class="form-control" id="insta" formControlName="insta">
+      </div>
+      <div class="bouton">
+          <button type="submit" (click)="signUp()" [disabled]="signupForm.invalid">S'INSCRIRE</button>
+      </div>
+  </form>
+</div>
 

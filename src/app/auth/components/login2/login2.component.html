@@ -1,15 +1,16 @@
-<h2>Se connecter</h2>
-<form [formGroup]="loginForm">
-  <div class="form-group">
-    <label for="loginEmail">Email</label>
-    <input type="email" class="form-control" id="loginEmail" formControlName="loginEmail">
+<div class="container">
+  <h2>Se connecter</h2>
+  <form [formGroup]="loginForm">
+    <div class="form-group">
+      <input placeholder="email" type="email" class="form-control" id="loginEmail" formControlName="loginEmail">
+    </div>
+    <div class="bouton">
+      <button type="submit" (click)="login()" [disabled]="loginForm.invalid">OK</button>
+    </div>
+  </form>
+  <div class="inscription-container">
+    <p class="inscription">Nouveau sur <strong>Social Share</strong> ?</p>
+    <button class="bouton-inscription" (click)="goToSignup()">Inscris-toi ici !</button>
   </div>
-  <div class="bouton">
-    <button type="submit" (click)="login()" [disabled]="loginForm.invalid">CONNEXION</button>
-  </div>
-</form>
-<div class="inscription-container">
-  <p class="inscription">Nouveau sur <strong>Social Share</strong> ?</p>
-  <button class="bouton-inscription" (click)="goToSignup()">Inscris-toi ici !</button>
 </div>
 

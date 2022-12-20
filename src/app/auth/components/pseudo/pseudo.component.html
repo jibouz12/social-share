@@ -1,9 +1,10 @@
-<form [formGroup]="signupForm">
-  <div class="form-group">
-    <label for="signupPseudo">Pseudo</label>
-    <input type="pseudo" class="form-control" id="signupPseudo" formControlName="signupPseudo">
-  </div>
-  <div class="bouton">
-    <button type="submit" (click)="signUp()" [disabled]="signupForm.invalid">INSCRIPTION</button>
+<div class="container">
+  <form [formGroup]="signupForm">
+    <div class="form-group">
+      <input placeholder="choisis ton pseudo..." type="pseudo" class="form-control" id="signupPseudo" formControlName="signupPseudo">
+    </div>
+    <div class="bouton">
+      <button type="submit" (click)="signUp()" [disabled]="signupForm.invalid">OK</button>
+    </div>
+  </form>
 </div>
-</form>
