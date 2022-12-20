@@ -13,7 +13,7 @@ export class Tab1Page {
     setTimeout(() => {
       window.location.reload();
       event.target.complete();
-    }, 2000);
+    }, 1500);
   };
 
 }
