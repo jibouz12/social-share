@@ -6,14 +6,9 @@ import { Injectable } from "@angular/core";
   })
 
   export class SignupService {
-    private signPseudo = '';
     private signEmail = '';
     private signPass = '';
 
-
-    savePseudo(pseudo : string) {
-      this.signPseudo = pseudo
-    }
 
     saveEmail(email : string) {
       this.signEmail = email
@@ -21,10 +16,6 @@ import { Injectable } from "@angular/core";
 
     savePass(pass : string) {
       this.signPass = pass
-    }
-
-    getPseudo() : string {
-      return this.signPseudo
     }
 
     getEmail() : string {

@@ -7,12 +7,16 @@ import { AuthService } from '../core/services/auth.service';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page implements OnInit {
-  pseudo!: string;
+  insta!: string;
 
   constructor(private authService : AuthService) {}
 
   ngOnInit() {
-    this.pseudo = this.authService.getUserPseudo()
+    this.insta = this.authService.getUserInsta();
+  }
+
+  logOut() {
+    this.authService.logout()
   }
 
 }

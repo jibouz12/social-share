@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { catchError, EMPTY, take, tap } from 'rxjs';
-import { GPSService } from 'src/app/core/services/GPS.service';
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 import { SignupService } from 'src/app/core/services/signup.service';
 
@@ -25,8 +24,8 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder : FormBuilder,
               private auth : AuthService,
               private router: Router,
-              private geolocation: Geolocation,
-              private GPSService : GPSService,
+              private geolocation : Geolocation,
+              private authService : AuthService,
               private signupService : SignupService) { }
 
   ngOnInit(): void {
@@ -51,7 +50,7 @@ export class LoginComponent implements OnInit {
     this.auth.loginUser(email, password).pipe(
       take(1),
       tap(() => {
-        this.GPSService.modifyGPS(this.latitude, this.longitude).pipe(
+        this.authService.modifyGPS(this.latitude, this.longitude).pipe(
           take(1),
         ).subscribe();
       }),

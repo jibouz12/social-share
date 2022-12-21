@@ -24,7 +24,7 @@ export class EmailComponent implements OnInit {
   signUp() {
     const email = this.signupForm.get('signupEmail')!.value;
     this.signupService.saveEmail(email);
-    this.router.navigateByUrl('step3')
+    this.router.navigateByUrl('step2')
   }
 
 }

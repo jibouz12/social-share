@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { Constants } from 'src/app/constants/constants';
+import { Observable } from 'rxjs/internal/Observable';
+import { GPS } from '../models/GPS.model';
 
 @Injectable({
     providedIn: 'root'
@@ -10,7 +12,6 @@ import { Constants } from 'src/app/constants/constants';
   export class AuthService {
     private userId = "";
     private authToken = "";
-    private pseudo = "";
     private insta = "";
 
     constructor(private http: HttpClient,
@@ -52,17 +53,6 @@ getUserId(): string {
 }
 
 ////////////////////
-/// récupérer pseudo
-/// ( même principe que pour getToken() )
-getUserPseudo(): string {
-    if(localStorage.getItem("rs") != null) {
-        return localStorage.getItem("rs")!.slice(0, -3);
-    } else {
-        return this.pseudo;
-    }
-}
-
-////////////////////
 /// récupérer insta
 /// ( même principe que pour getToken() )
 getUserInsta(): string {
@@ -73,28 +63,25 @@ getUserInsta(): string {
     }
 }
 
-
 ////////////////////////////////
 /// créer nouvel utilisateur
-createUser(email: string, password: string, pseudo: string, insta: string) {
-    return this.http.post<{ message: string }>(`${this.constants.protocol}://${this.constants.domain}/api/auth/signup`, {email: email, password: password, pseudo: pseudo, insta: insta});
+createUser(email: string, password: string, latitude: number, longitude: number, insta: string) {
+    return this.http.post<{ message: string }>(`${this.constants.protocol}://${this.constants.domain}/api/auth/signup`, {email: email, password: password, latitude: latitude, longitude: longitude, insta: insta});
 }
 
 //////////////////////
 /// connection utilisateur
 /// + ajouter infos sécurisées dans le LS
 loginUser(email: string, password: string) {
-    return this.http.post<{ userId: string, token: string, pseudo: string, insta: string }>(`${this.constants.protocol}://${this.constants.domain}/api/auth/login`, {email: email, password: password}).pipe(
-        tap(({ userId, token, pseudo, insta}) => {
+    return this.http.post<{ userId: string, token: string, latitude: number, longitude: number, insta: string }>(`${this.constants.protocol}://${this.constants.domain}/api/auth/login`, {email: email, password: password}).pipe(
+        tap(({ userId, token, insta}) => {
             this.userId = userId;
             this.authToken = token;
-            this.pseudo = pseudo;
             this.insta = insta;
         }),
         tap(() => {
             localStorage.setItem("xs", this.authToken + this.makeRandom(9, "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890,./;'-*&^%$#@!~`"));
             localStorage.setItem("xl", this.userId + this.makeRandom(6, "abcdefghijklmnopqrstuvwxyz1234567890"));
-            localStorage.setItem("rs", this.pseudo + this.makeRandom(3, "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890"));
             localStorage.setItem("insta", this.insta);
         })
     );
@@ -104,8 +91,20 @@ loginUser(email: string, password: string) {
 /// deconnexion utilisateur
 logout() {
     this.authToken = '';
-    this.router.navigate(['auth/login']);
+    this.router.navigate(['auth/login2']);
     localStorage.clear();
+}
+
+/////////////////
+/// modifier la localisation
+modifyGPS(latitude : number, longitude : number) {
+    return this.http.put<{ message: string }>(`${this.constants.protocol}://${this.constants.domain}/api/auth/gps`, {latitude: latitude, longitude: longitude});
+}
+  
+/////////////////
+///  localisation proche
+closeGPS(latitude: number, longitude: number) : Observable<GPS[]> {
+    return this.http.get<GPS[]>(`${this.constants.protocol}://${this.constants.domain}/api/auth/gps/${latitude}+${longitude}`);
 }
 
 }

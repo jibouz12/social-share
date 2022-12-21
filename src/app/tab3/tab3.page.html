@@ -1,17 +1,16 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      {{ pseudo }}
-    </ion-title>
+    <ion-toolbar>
+      <ion-buttons slot="secondary">
+        <ion-button (click)="logOut()">
+          <ion-icon slot="icon-only" name="power-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>{{ insta }}</ion-title>
+    </ion-toolbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Profil</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <app-profil></app-profil>
 </ion-content>

@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { catchError, EMPTY, switchMap, take, tap } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
-import { GPSService } from 'src/app/core/services/GPS.service';
 import { SignupService } from 'src/app/core/services/signup.service';
 
 
@@ -26,7 +25,6 @@ export class SignupComponent implements OnInit {
               private auth : AuthService,
               private router : Router,
               private geolocation: Geolocation,
-              private GPSService : GPSService,
               private signupService : SignupService) { }
 
   ngOnInit(): void {
@@ -49,17 +47,16 @@ export class SignupComponent implements OnInit {
 /// --> redirection vers feed
   signUp() {
     const email = this.signupService.getEmail();
+    console.log(email)
     const password = this.signupService.getPass();
-    const pseudo = this.signupService.getPseudo();
+    console.log(password)
     const insta = this.signupForm.get('insta')!.value;
-    this.auth.createUser(email, password, pseudo, insta).pipe(
+    console.log(insta)
+    const latitude = this.latitude;
+    const longitude = this.longitude;
+    this.auth.createUser(email, password, latitude, longitude, insta).pipe(
       take(1),
       switchMap(() => this.auth.loginUser(email, password)),
-      tap(() => {    
-        this.GPSService.createGPS(this.latitude, this.longitude, pseudo, insta).pipe(
-          take(1)
-        ).subscribe();
-      }),
       tap(() => {
         this.router.navigate(['']);
       }),
