@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfilComponent } from './components/profil.component';
+import { IonicModule } from '@ionic/angular';
 
 
 
@@ -9,7 +10,8 @@ import { ProfilComponent } from './components/profil.component';
     ProfilComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    IonicModule,
   ],
   exports: [
     ProfilComponent,

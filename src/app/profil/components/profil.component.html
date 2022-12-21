@@ -1,3 +1,9 @@
 <div class="container">
-  <a class="insta" href="{{ insta }}">instagram</a>
+  <ion-avatar (click)="changeAvatar()">
+    <img alt="avatar" src="assets/images/{{ avatar }}.svg"/>
+  </ion-avatar>
 </div>
+
+<ion-range color="tertiary" [min]="0" [value]="moveEnd" [max]="10" (ionKnobMoveEnd)="onIonKnobMoveEnd($event)"></ion-range>
+<ion-label>Distance : {{ moveEnd }} km</ion-label>
+

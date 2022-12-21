@@ -1,8 +1,23 @@
 .container {
     display: flex;
-    flex-flow: column;
-    height: 200px;
-    width: 100%;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+}
+
+ion-avatar {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 50%;
+    height: 50%;
+    --border-radius: 50%;
+}
+
+ion-range {
+    margin: 25px;
+}
+
+ion-label {
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }

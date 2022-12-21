@@ -12,6 +12,7 @@ import { CoreModule } from './core/core.module';
 
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 import { SharedModule } from './shared/shared.module';
+import { AvatarModule } from './avatar/avatar.module';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { SharedModule } from './shared/shared.module';
     CoreModule,
     AuthModule,
     SharedModule,
+    AvatarModule,
   ],
 
   providers: [

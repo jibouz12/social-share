@@ -47,11 +47,8 @@ export class SignupComponent implements OnInit {
 /// --> redirection vers feed
   signUp() {
     const email = this.signupService.getEmail();
-    console.log(email)
     const password = this.signupService.getPass();
-    console.log(password)
     const insta = this.signupForm.get('insta')!.value;
-    console.log(insta)
     const latitude = this.latitude;
     const longitude = this.longitude;
     this.auth.createUser(email, password, latitude, longitude, insta).pipe(

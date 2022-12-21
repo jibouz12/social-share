@@ -1,18 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../core/guards/auth.guard';
-import { Tab2Page } from './tab2.page';
+import { AvatarComponent } from './components/avatar.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: Tab2Page,
-    canActivate: [AuthGuard]
-  }
+  { path: '', component: AvatarComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class Tab2PageRoutingModule {}
+export class AvatarRoutingModule {}

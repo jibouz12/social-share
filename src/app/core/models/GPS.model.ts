@@ -3,5 +3,6 @@ export class GPS {
     userId!: string;
     latitude!: number;
     longitude!: number;
-    insta!: string
+    insta!: string;
+    avatar!: string;
 }

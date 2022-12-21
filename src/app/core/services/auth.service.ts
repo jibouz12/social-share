@@ -13,6 +13,7 @@ import { GPS } from '../models/GPS.model';
     private userId = "";
     private authToken = "";
     private insta = "";
+    private avatar = "";
 
     constructor(private http: HttpClient,
                 private router: Router,
@@ -43,7 +44,6 @@ getToken(): string {
 
 ////////////////////
 /// récupérer userId
-/// ( même principe que pour getToken() )
 getUserId(): string {
     if (localStorage.getItem("xl") != null) {
         return localStorage.getItem("xl")!.slice(0, -6);
@@ -54,7 +54,6 @@ getUserId(): string {
 
 ////////////////////
 /// récupérer insta
-/// ( même principe que pour getToken() )
 getUserInsta(): string {
     if(localStorage.getItem("insta") != null) {
         return localStorage.getItem("insta")!;
@@ -63,26 +62,38 @@ getUserInsta(): string {
     }
 }
 
+////////////////////
+/// récupérer avatar
+getUserAvatar(): string {
+    if(localStorage.getItem("avatar") != null) {
+        return localStorage.getItem("avatar")!;
+    } else {
+        return this.avatar;
+    }
+}
+
 ////////////////////////////////
 /// créer nouvel utilisateur
 createUser(email: string, password: string, latitude: number, longitude: number, insta: string) {
-    return this.http.post<{ message: string }>(`${this.constants.protocol}://${this.constants.domain}/api/auth/signup`, {email: email, password: password, latitude: latitude, longitude: longitude, insta: insta});
+    return this.http.post<{ message: string }>(`${this.constants.protocol}://${this.constants.domain}/api/auth/signup`, {email: email, password: password, latitude: latitude, longitude: longitude, insta: insta });
 }
 
 //////////////////////
 /// connection utilisateur
 /// + ajouter infos sécurisées dans le LS
 loginUser(email: string, password: string) {
-    return this.http.post<{ userId: string, token: string, latitude: number, longitude: number, insta: string }>(`${this.constants.protocol}://${this.constants.domain}/api/auth/login`, {email: email, password: password}).pipe(
-        tap(({ userId, token, insta}) => {
+    return this.http.post<{ userId: string, token: string, insta: string, avatar: string }>(`${this.constants.protocol}://${this.constants.domain}/api/auth/login`, {email: email, password: password}).pipe(
+        tap(({ userId, token, insta, avatar }) => {
             this.userId = userId;
             this.authToken = token;
             this.insta = insta;
+            this.avatar = avatar;
         }),
         tap(() => {
             localStorage.setItem("xs", this.authToken + this.makeRandom(9, "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890,./;'-*&^%$#@!~`"));
             localStorage.setItem("xl", this.userId + this.makeRandom(6, "abcdefghijklmnopqrstuvwxyz1234567890"));
             localStorage.setItem("insta", this.insta);
+            localStorage.setItem("avatar", this.avatar);
         })
     );
 }
@@ -105,6 +116,24 @@ modifyGPS(latitude : number, longitude : number) {
 ///  localisation proche
 closeGPS(latitude: number, longitude: number) : Observable<GPS[]> {
     return this.http.get<GPS[]>(`${this.constants.protocol}://${this.constants.domain}/api/auth/gps/${latitude}+${longitude}`);
+}
+
+/////////////////
+/// changer avatar
+updateAvatar(avatar: string) {
+    return this.http.put<{ message: string }>(`${this.constants.protocol}://${this.constants.domain}/api/auth/avatar`, {avatar: avatar});
+}
+
+/////////////////
+/// changer distance
+updateDist(dist: number) {
+    return this.http.put<{ message: string }>(`${this.constants.protocol}://${this.constants.domain}/api/auth/dist`, {dist: dist});
+}
+
+/////////////////
+/// récupérer distance
+getDist() {
+    return this.http.get<{dist: number}>(`${this.constants.protocol}://${this.constants.domain}/api/auth/dist`);
 }
 
 }

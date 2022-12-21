@@ -17,7 +17,7 @@ export class Tab1Page implements OnInit {
   longitude!: number;
 
   constructor(private geolocation: Geolocation,
-              private authService : AuthService) {}
+              private authService : AuthService,) {}
 
   ngOnInit() {
     this.getLocation()
@@ -34,7 +34,7 @@ export class Tab1Page implements OnInit {
     setTimeout(() => {
       this.getLocation()
       event.target.complete();
-    }, 1500);
+    }, 2000);
   };
 
 /////////////////////////////////////
@@ -42,9 +42,7 @@ export class Tab1Page implements OnInit {
   getLocation() {
     this.geolocation.getCurrentPosition().then((resp) => {
       this.latitude = resp.coords.latitude;
-      console.log(this.latitude)
       this.longitude = resp.coords.longitude;
-      console.log(this.longitude)
      }).catch((error) => {
        console.log('Error getting location', error);
      });
@@ -57,4 +55,7 @@ export class Tab1Page implements OnInit {
      ).subscribe();
   }
 
+
 }
+
+

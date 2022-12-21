@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { RangeCustomEvent } from '@ionic/angular';
+import { RangeValue } from '@ionic/core';
+import { take, tap } from 'rxjs';
+
 
 
 @Component({
@@ -9,12 +14,33 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class ProfilComponent implements OnInit {
   insta!: string;
+  avatar!: string;
 
-  constructor(private authService : AuthService) { }
+  moveEnd!: RangeValue;
+
+  constructor(private authService : AuthService,
+              private router : Router) { }
 
   ngOnInit() {
     this.insta = 'https://instagram.com/' + this.authService.getUserInsta();
 
+    this.avatar = this.authService.getUserAvatar();
+
+    this.authService.getDist().pipe(
+      take(1),
+      tap(e => this.moveEnd = e.dist)
+    ).subscribe();
+
   }
 
+  changeAvatar() {
+    this.router.navigateByUrl('avatar');
+  }
+
+  onIonKnobMoveEnd(ev: Event) {
+    this.moveEnd = (ev as RangeCustomEvent).detail.value;
+    this.authService.updateDist(this.moveEnd as number).pipe(
+      take(1)
+    ).subscribe()
+  }
 }
