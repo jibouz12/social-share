@@ -1,4 +1,4 @@
-<ion-content [fullscreen]="true">
+<ion-content color="primary" [fullscreen]="true">
   <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
     <ion-refresher-content
     pullingIcon="chevron-down-circle-outline"
@@ -6,5 +6,8 @@
     >
     </ion-refresher-content>
   </ion-refresher>
+  <div class="spin" *ngIf="spinner === true">
+    <ion-spinner name="bubbles" pullingIcon="chevron-down-circle-outline"></ion-spinner>
+</div>
   <app-post *ngFor="let postElement of (post$ | async) as post"  [post]="postElement"></app-post>
 </ion-content>

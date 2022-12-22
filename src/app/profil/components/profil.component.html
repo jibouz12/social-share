@@ -1,9 +1,9 @@
-<div class="container">
-  <ion-avatar (click)="changeAvatar()">
-    <img alt="avatar" src="assets/images/{{ avatar }}.svg"/>
-  </ion-avatar>
-</div>
-
-<ion-range color="tertiary" [min]="0" [value]="moveEnd" [max]="10" (ionKnobMoveEnd)="onIonKnobMoveEnd($event)"></ion-range>
-<ion-label>Distance : {{ moveEnd }} km</ion-label>
-
+<ion-content color="primary">
+  <div class="container">
+    <ion-avatar (click)="changeAvatar()">
+      <img alt="avatar" src="assets/images/{{ avatar }}.svg"/>
+    </ion-avatar>
+  </div>
+  <ion-range color="secondary" [min]="1" [value]="moveEnd" [max]="15" (ionKnobMoveEnd)="onIonKnobMoveEnd($event)"></ion-range>
+  <ion-label>Distance : {{ moveEnd }} km</ion-label>
+</ion-content>

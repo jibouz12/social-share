@@ -15,12 +15,17 @@ export class Tab1Page implements OnInit {
   post$!: Observable<GPS[]>;
   latitude!: number;
   longitude!: number;
+  spinner!: boolean;
 
   constructor(private geolocation: Geolocation,
               private authService : AuthService,) {}
 
   ngOnInit() {
-    this.getLocation()
+    this.spinner = true;
+    setTimeout(() => {
+      this.getLocation()
+      this.spinner = false;
+    }, 2000);
 
     interval(300000).subscribe(() => {
       this.getLocation();
