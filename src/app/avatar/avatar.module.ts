@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AvatarComponent } from './components/avatar.component';
 import { AvatarRoutingModule } from './avatar-routing.module';
+import { IonicModule } from '@ionic/angular';
 
 
 
@@ -12,6 +13,7 @@ import { AvatarRoutingModule } from './avatar-routing.module';
   imports: [
     CommonModule,
     AvatarRoutingModule,
+    IonicModule,
   ],
   exports: [
     AvatarComponent,

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../core/services/auth.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabs',
@@ -9,10 +8,16 @@ import { AuthService } from '../core/services/auth.service';
 })
 export class TabsPage  {
 
-  constructor(private authService : AuthService) {}
+  constructor(private router : Router) {}
 
-  logOut() {
-    this.authService.logout()
+  goFeed() {
+    this.router.navigateByUrl('tabs/tab1').then(() => {
+      location.reload()
+    })
+  }
+
+  goProfil() {
+    this.router.navigateByUrl('tabs/tab3')
   }
 
 }

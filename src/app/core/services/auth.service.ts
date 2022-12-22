@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Constants } from 'src/app/constants/constants';
 import { Observable } from 'rxjs/internal/Observable';
 import { GPS } from '../models/GPS.model';
+import { take } from 'rxjs/internal/operators/take';
 
 @Injectable({
     providedIn: 'root'

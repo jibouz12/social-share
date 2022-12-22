@@ -55,7 +55,9 @@ export class LoginComponent implements OnInit {
         ).subscribe();
       }),
       tap(() => {
-        this.router.navigate(['']);
+        this.router.navigate(['']).then(() => {
+          location.reload()
+        });
       }),
       catchError(error => {
         this.errorMsg = error.message;
