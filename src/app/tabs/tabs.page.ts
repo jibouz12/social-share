@@ -11,9 +11,7 @@ export class TabsPage  {
   constructor(private router : Router) {}
 
   goFeed() {
-    this.router.navigateByUrl('tabs/tab1').then(() => {
-      location.reload()
-    })
+    this.router.navigateByUrl('tabs/tab1')
   }
 
   goProfil() {
