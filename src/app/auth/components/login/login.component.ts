@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
         ).subscribe();
       }),
       tap(() => {
-        this.router.navigateByUrl('tabs/tab3')
+        this.router.navigateByUrl('tabs/tab1')
       }),
       catchError(error => {
         this.errorMsg = error.message;

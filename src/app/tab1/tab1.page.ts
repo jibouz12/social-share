@@ -25,7 +25,7 @@ export class Tab1Page implements OnInit {
     setTimeout(() => {
       this.getLocation();
       this.spinner = false;
-    }, 2000);
+    }, 3000);
   }
 
 
