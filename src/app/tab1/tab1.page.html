@@ -7,7 +7,9 @@
     </ion-refresher-content>
   </ion-refresher>
   <div class="spin" *ngIf="spinner === true">
-    <ion-spinner name="bubbles" pullingIcon="chevron-down-circle-outline"></ion-spinner>
+    <ion-text color="dark">
+      Scroll Down to reload !
+    </ion-text>
   </div>
   <app-post *ngFor="let postElement of (post$ | async) as post"  [post]="postElement"></app-post>
 </ion-content>
