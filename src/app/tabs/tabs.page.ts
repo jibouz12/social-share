@@ -11,11 +11,11 @@ export class TabsPage  {
   constructor(private router : Router) {}
 
   goFeed() {
-    this.router.navigateByUrl('tabs/tab1')
+    this.router.navigateByUrl('')
   }
 
   goProfil() {
-    this.router.navigateByUrl('tabs/tab3')
+    this.router.navigateByUrl('profil')
   }
 
 }

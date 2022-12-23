@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
-import { interval, Observable, tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { take } from 'rxjs/internal/operators/take';
 import { GPS } from 'src/app/core/models/GPS.model';
 import { AuthService } from '../core/services/auth.service';
@@ -15,22 +16,17 @@ export class Tab1Page implements OnInit {
   post$!: Observable<GPS[]>;
   latitude!: number;
   longitude!: number;
-  spinner!: boolean;
-  nbrPosts!: number;
 
   constructor(private geolocation: Geolocation,
-              private authService : AuthService,) {}
+              private authService : AuthService,
+              private router : Router) {}
 
+  
   ngOnInit() {
-    this.spinner = true;
-  }
-
-  ionViewWillEnter() {
-    this.spinner = true;
+    this.router.navigateByUrl('')
   }
 
   ionViewDidEnter() {
-    this.spinner = false;
     this.getLocation()
   }
 

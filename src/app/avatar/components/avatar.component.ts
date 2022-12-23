@@ -15,7 +15,7 @@ export class AvatarComponent implements OnInit {
               private authService : AuthService) { }
 
   ngOnInit() {
-    
+    this.router.navigateByUrl('profil')
   }
 
   onClick(e : string) {
@@ -25,8 +25,8 @@ export class AvatarComponent implements OnInit {
         localStorage.setItem('avatar', e)
       }),
       tap(() => {
-        this.router.navigateByUrl('tabs/tab3').then(() => {
-          location.reload()
+        this.router.navigateByUrl('profil').then(() => {
+          location.reload();
         })
       }),
     ).subscribe()

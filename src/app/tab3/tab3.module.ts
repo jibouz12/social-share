@@ -14,6 +14,7 @@ import { ProfilModule } from '../profil/profil.module';
     FormsModule,
     Tab3PageRoutingModule,
     ProfilModule,
+    IonicModule,
   ],
   declarations: [Tab3Page]
 })
