@@ -1,14 +1,15 @@
-<div class="container">
-  <form [formGroup]="signupForm">
-    <div class="form-group">
-      <ion-item fill="solid">
-          <ion-label position="floating">Email</ion-label>
-          <ion-input type="email" email class="form-control" id="signupEmail" formControlName="signupEmail"></ion-input>
-          <ion-note slot="error">Enter a valid email</ion-note>
-      </ion-item>
-    </div>
-    <div class="bouton">
-        <button type="submit" (click)="signUp()" [disabled]="signupForm.invalid">OK</button>
-    </div>
-  </form>
-</div>
+<ion-content color="primary" [fullscreen]="true">
+  <div class="container">
+    <form [formGroup]="signupForm">
+      <div class="form-group">
+        <ion-item fill="solid">
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="email" email class="form-control" id="signupEmail" formControlName="signupEmail"></ion-input>
+        </ion-item>
+      </div>
+      <div class="bouton">
+          <ion-button color="success" type="submit" (click)="signUp()" [disabled]="signupForm.invalid">sign up</ion-button>
+      </div>
+    </form>
+  </div>
+</ion-content>

@@ -4,6 +4,6 @@
       <img alt="avatar" src="assets/images/{{ avatar }}.svg"/>
     </ion-avatar>
   </div>
-  <ion-range color="secondary" [min]="1" [value]="moveEnd" [max]="15" (ionKnobMoveEnd)="onIonKnobMoveEnd($event)"></ion-range>
+  <ion-range color="secondary" [min]="1" [value]="moveEnd" [max]="50" (ionKnobMoveEnd)="onIonKnobMoveEnd($event)"></ion-range>
   <ion-label>Distance : {{ moveEnd }} km</ion-label>
 </ion-content>

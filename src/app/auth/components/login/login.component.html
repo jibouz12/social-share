@@ -1,15 +1,20 @@
-<div class="container">
-  <form [formGroup]="loginForm">
-    <div class="form-group">
-      <ion-item fill="solid">
-        <ion-label position="floating">Password</ion-label>
-        <ion-input type="password" class="form-control" id="loginPassword" formControlName="loginPassword"></ion-input>
-      </ion-item>
-    </div>
-    <div class="bouton">
-        <button type="submit" (click)="login()" [disabled]="loginForm.invalid">CONNEXION</button>
-    </div>
-  </form>
-</div>
+<ion-content color="primary" [fullscreen]="true">
+  <div class="container">
+    <form [formGroup]="loginForm">
+      <div class="form-group">
+        <ion-item fill="solid">
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" class="form-control" id="loginPassword" formControlName="loginPassword"></ion-input>
+        </ion-item>
+      </div>
+      <div class="bouton">
+          <ion-button color="success" type="submit" (click)="login()" [disabled]="loginForm.invalid">
+            login
+            <ion-icon slot="end" name="checkmark-outline"></ion-icon>
+          </ion-button>
+      </div>
+    </form>
+  </div>
+</ion-content>
 
 

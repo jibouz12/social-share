@@ -1,13 +1,18 @@
-<div class="container">
-  <form [formGroup]="signupForm">
-      <div class="form-group">
-        <ion-item>
-          <ion-input placeholder="Instagram Pseudo" class="form-control" id="insta" formControlName="insta"></ion-input>
-        </ion-item>
-      </div>
-      <div class="bouton">
-          <button type="submit" (click)="signUp()" [disabled]="signupForm.invalid">S'INSCRIRE</button>
-      </div>
-  </form>
-</div>
+<ion-content color="primary" [fullscreen]="true">
+  <div class="container">
+    <form [formGroup]="signupForm">
+        <div class="form-group">
+          <ion-item>
+            <ion-input placeholder="Instagram Pseudo" class="form-control" id="insta" formControlName="insta"></ion-input>
+          </ion-item>
+        </div>
+        <div class="bouton">
+            <ion-button color="success" type="submit" (click)="signUp()" [disabled]="signupForm.invalid">
+              sign up 
+              <ion-icon slot="end" name="checkmark-outline"></ion-icon>
+            </ion-button>
+        </div>
+    </form>
+  </div>
+</ion-content>
 

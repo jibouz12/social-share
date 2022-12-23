@@ -1,10 +1,8 @@
 .container {
-    margin: 50px 0px;
-    width: 100%;
     height: 100%;
     display: flex;
     flex-flow: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     .form-group{
         display: flex;
@@ -16,6 +14,8 @@
         text-align: center;
     }
     .inscription-container {
+        position: absolute;
+        bottom: 50px;
         text-align: center;
     }
 }

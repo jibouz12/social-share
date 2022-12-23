@@ -1,21 +1,20 @@
-<div class="container">
-  <h2>Se connecter</h2>
-  <form [formGroup]="loginForm">
-    <div class="form-group">
-      <ion-item fill="solid">
-        <ion-label position="floating">Email</ion-label>
-        <ion-input type="email" email class="form-control" id="loginEmail" formControlName="loginEmail"></ion-input>
-        <ion-note slot="error">Enter a valid email</ion-note>
-      </ion-item>
+<ion-content color="primary" [fullscreen]="true">
+  <div class="container">
+    <form [formGroup]="loginForm">
+      <div class="form-group">
+        <ion-item fill="solid">
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" email class="form-control" id="loginEmail" formControlName="loginEmail"></ion-input>
+        </ion-item>
+      </div>
+      <div class="bouton">
+        <ion-button color="success" type="submit" (click)="login()" [disabled]="loginForm.invalid">login</ion-button>
+      </div>
+    </form>
+    <div class="inscription-container">
+      <p class="inscription">Not on <strong>Social Share</strong> ?</p>
+      <ion-button class="bouton-inscription" (click)="goToSignup()">Sign up</ion-button>
     </div>
-    <div class="bouton">
-      <button type="submit" (click)="login()" [disabled]="loginForm.invalid">OK</button>
-    </div>
-  </form>
-
-  <div class="inscription-container">
-    <p class="inscription">New on <strong>Social Share</strong> ?</p>
-    <button class="bouton-inscription" (click)="goToSignup()">Sign up !</button>
   </div>
-</div>
+</ion-content>
 
