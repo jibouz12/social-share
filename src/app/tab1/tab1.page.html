@@ -6,6 +6,5 @@
     >
     </ion-refresher-content>
   </ion-refresher>
-  <ion-spinner class="spinner" *ngIf="spinner === true" name="bubbles"></ion-spinner>
   <app-post *ngFor="let postElement of (post$ | async) as post"  [post]="postElement"></app-post>
 </ion-content>

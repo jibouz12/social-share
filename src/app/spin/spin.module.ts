@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SpinComponent } from './components/spin.component';
 import { SpinRoutingModule } from './spin-routing.module';
+import { IonicModule } from '@ionic/angular';
 
 
 
@@ -11,7 +12,8 @@ import { SpinRoutingModule } from './spin-routing.module';
   ],
   imports: [
     CommonModule,
-    SpinRoutingModule
+    SpinRoutingModule,
+    IonicModule
   ],
   exports: [
     SpinComponent
