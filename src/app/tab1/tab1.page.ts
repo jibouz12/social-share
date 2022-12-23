@@ -15,17 +15,16 @@ export class Tab1Page implements OnInit {
   post$!: Observable<GPS[]>;
   latitude!: number;
   longitude!: number;
-  spinner!: boolean;
 
   constructor(private geolocation: Geolocation,
               private authService : AuthService,) {}
 
   ngOnInit() {
-    this.spinner = true;
-    setTimeout(() => {
-      this.getLocation();
-      this.spinner = false;
-    }, 3000);
+
+  }
+
+  ionViewDidEnter() {
+    this.getLocation()
   }
 
 
@@ -35,7 +34,7 @@ export class Tab1Page implements OnInit {
     setTimeout(() => {
       this.getLocation()
       event.target.complete();
-    }, 2000);
+    }, 1500);
   };
 
 /////////////////////////////////////

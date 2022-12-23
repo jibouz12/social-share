@@ -1,13 +1,9 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-toolbar>
+  <ion-toolbar text-center>
       <ion-title>{{ insta }}</ion-title>
-      <ion-buttons slot="secondary">
-        <ion-button color="danger" (click)="logOut()">
-          <ion-icon slot="icon-only" name="power-outline"></ion-icon>
-        </ion-button>
+      <ion-buttons slot="end" (click)="logOut()">
+          <ion-icon color="danger" slot="icon-only" name="power-outline"></ion-icon>
       </ion-buttons>
-    </ion-toolbar>
   </ion-toolbar>
 </ion-header>
 
