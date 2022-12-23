@@ -17,7 +17,7 @@ export class SpinComponent implements OnInit {
   }
 
   test() {
-    this.router.navigateByUrl('feed')
+    this.router.navigateByUrl('profil')
   }
 
 }
