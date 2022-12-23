@@ -15,7 +15,7 @@ export class AvatarComponent implements OnInit {
               private authService : AuthService) { }
 
   ngOnInit() {
-    this.router.navigateByUrl('profil')
+    
   }
 
   onClick(e : string) {

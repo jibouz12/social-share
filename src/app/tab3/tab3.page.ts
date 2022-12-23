@@ -15,6 +15,7 @@ export class Tab3Page implements OnInit {
 
   ngOnInit() {
     this.insta = this.authService.getUserInsta();
+    this.router.navigateByUrl('profil')
   }
 
   changeAvatar() {
