@@ -6,5 +6,8 @@
     >
     </ion-refresher-content>
   </ion-refresher>
+  <div class="spinner" *ngIf="spinner === true">
+    <img src="assets/images/Scroll-Down.gif" alt="scroll down">
+  </div>
   <app-post *ngFor="let postElement of (post$ | async) as post"  [post]="postElement"></app-post>
 </ion-content>
