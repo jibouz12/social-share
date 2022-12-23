@@ -9,6 +9,10 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        loadChildren: () => import('../spin/spin.module').then(m => m.SpinModule)
+      },
+      {
+        path: 'feed',
         loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
       },
       {
