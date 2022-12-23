@@ -1,7 +1,10 @@
 <div class="container">
   <form [formGroup]="loginForm">
     <div class="form-group">
-      <input placeholder="mot de passe" type="password" class="form-control" id="loginPassword" formControlName="loginPassword">
+      <ion-item fill="solid">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" class="form-control" id="loginPassword" formControlName="loginPassword"></ion-input>
+      </ion-item>
     </div>
     <div class="bouton">
         <button type="submit" (click)="login()" [disabled]="loginForm.invalid">CONNEXION</button>

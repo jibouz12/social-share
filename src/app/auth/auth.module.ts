@@ -7,6 +7,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { EmailComponent } from './components/email/email.component';
 import { PasswordComponent } from './components/password/password.component';
 import { Login2Component } from './components/login2/login2.component';
+import { IonicModule } from '@ionic/angular';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { Login2Component } from './components/login2/login2.component';
     FormsModule,
     ReactiveFormsModule,
     AuthRoutingModule,
+    IonicModule,
   ],
   exports: [
     LoginComponent,

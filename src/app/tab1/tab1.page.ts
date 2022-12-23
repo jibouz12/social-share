@@ -15,15 +15,22 @@ export class Tab1Page implements OnInit {
   post$!: Observable<GPS[]>;
   latitude!: number;
   longitude!: number;
+  spinner!: boolean;
+  nbrPosts!: number;
 
   constructor(private geolocation: Geolocation,
               private authService : AuthService,) {}
 
   ngOnInit() {
+    this.spinner = true;
+  }
 
+  ionViewWillEnter() {
+    this.spinner = true;
   }
 
   ionViewDidEnter() {
+    this.spinner = false;
     this.getLocation()
   }
 
@@ -50,7 +57,7 @@ export class Tab1Page implements OnInit {
      this.authService.modifyGPS(this.latitude, this.longitude).pipe(
       take(1),
       tap(() => {
-        this.post$ = this.authService.closeGPS(this.latitude, this.longitude);
+        this.post$ = this.authService.closeGPS(this.latitude, this.longitude)
       })
      ).subscribe();
   }

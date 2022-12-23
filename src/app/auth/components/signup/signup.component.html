@@ -1,7 +1,9 @@
 <div class="container">
   <form [formGroup]="signupForm">
       <div class="form-group">
-        <input placeholder="pseudo Instagram" type="text" class="form-control" id="insta" formControlName="insta">
+        <ion-item>
+          <ion-input placeholder="Instagram Pseudo" class="form-control" id="insta" formControlName="insta"></ion-input>
+        </ion-item>
       </div>
       <div class="bouton">
           <button type="submit" (click)="signUp()" [disabled]="signupForm.invalid">S'INSCRIRE</button>

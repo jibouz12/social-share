@@ -2,15 +2,20 @@
   <h2>Se connecter</h2>
   <form [formGroup]="loginForm">
     <div class="form-group">
-      <input placeholder="email" type="email" class="form-control" id="loginEmail" formControlName="loginEmail">
+      <ion-item fill="solid">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" email class="form-control" id="loginEmail" formControlName="loginEmail"></ion-input>
+        <ion-note slot="error">Enter a valid email</ion-note>
+      </ion-item>
     </div>
     <div class="bouton">
       <button type="submit" (click)="login()" [disabled]="loginForm.invalid">OK</button>
     </div>
   </form>
+
   <div class="inscription-container">
-    <p class="inscription">Nouveau sur <strong>Social Share</strong> ?</p>
-    <button class="bouton-inscription" (click)="goToSignup()">Inscris-toi ici !</button>
+    <p class="inscription">New on <strong>Social Share</strong> ?</p>
+    <button class="bouton-inscription" (click)="goToSignup()">Sign up !</button>
   </div>
 </div>
 

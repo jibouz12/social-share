@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../core/services/auth.service';
 
 @Component({
@@ -9,10 +10,15 @@ import { AuthService } from '../core/services/auth.service';
 export class Tab3Page implements OnInit {
   insta!: string;
 
-  constructor(private authService : AuthService) {}
+  constructor(private authService : AuthService,
+              private router : Router) {}
 
   ngOnInit() {
     this.insta = this.authService.getUserInsta();
+  }
+
+  changeAvatar() {
+    this.router.navigateByUrl('avatar');
   }
 
   logOut() {

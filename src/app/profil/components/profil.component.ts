@@ -33,10 +33,6 @@ export class ProfilComponent implements OnInit {
 
   }
 
-  changeAvatar() {
-    this.router.navigateByUrl('avatar');
-  }
-
   onIonKnobMoveEnd(ev: Event) {
     this.moveEnd = (ev as RangeCustomEvent).detail.value;
     this.authService.updateDist(this.moveEnd as number).pipe(
