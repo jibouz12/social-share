@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 import { Observable, tap } from 'rxjs';
 import { take } from 'rxjs/internal/operators/take';
@@ -11,7 +11,7 @@ import { AuthService } from '../core/services/auth.service';
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page implements OnInit {
+export class Tab1Page {
   post$!: Observable<GPS[]>;
   latitude!: number;
   longitude!: number;
@@ -20,9 +20,6 @@ export class Tab1Page implements OnInit {
   constructor(private geolocation: Geolocation,
               private authService : AuthService) {}
 
-  ngOnInit(): void {
-    this.getLocation()
-  }
   
   ionViewDidEnter() {
     this.getLocation()
