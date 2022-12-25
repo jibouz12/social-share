@@ -11,7 +11,6 @@ import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
-import { SharedModule } from './shared/shared.module';
 import { AvatarModule } from './avatar/avatar.module';
 
 
@@ -24,7 +23,6 @@ import { AvatarModule } from './avatar/avatar.module';
     HttpClientModule,
     CoreModule,
     AuthModule,
-    SharedModule,
     AvatarModule,
   ],
 

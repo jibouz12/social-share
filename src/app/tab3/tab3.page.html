@@ -2,8 +2,10 @@
   <ion-header>
     <ion-toolbar>
         <ion-title>{{ insta }}</ion-title>
-        <ion-buttons (click)="logOut()" slot="end">
-          <ion-icon color="danger" name="power-outline"></ion-icon>
+        <ion-buttons (click)="presentAlert()" slot="end">
+          <ion-button>
+            <ion-icon color="danger" name="power-outline"></ion-icon>
+          </ion-button>
         </ion-buttons>
     </ion-toolbar>
   </ion-header>
