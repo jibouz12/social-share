@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { RangeCustomEvent } from '@ionic/angular';
+import { IonModal, RangeCustomEvent } from '@ionic/angular';
 import { RangeValue } from '@ionic/core';
 import { take, tap } from 'rxjs';
+import { OverlayEventDetail } from '@ionic/core/components';
+import { Router } from '@angular/router';
 
 
 
@@ -13,9 +15,12 @@ import { take, tap } from 'rxjs';
 })
 export class ProfilComponent implements OnInit {
   avatar!: string;
+  avatarSelected!: string;
   moveEnd!: RangeValue;
+  @ViewChild(IonModal) modal!: IonModal;
 
-  constructor(private authService : AuthService) { }
+  constructor(private authService : AuthService,
+              private router : Router) { }
 
   ngOnInit() {
     this.avatar = this.authService.getUserAvatar();
@@ -24,7 +29,6 @@ export class ProfilComponent implements OnInit {
       take(1),
       tap(e => this.moveEnd = e.dist)
     ).subscribe();
-
   }
 
   onIonKnobMoveEnd(ev: Event) {
@@ -33,4 +37,31 @@ export class ProfilComponent implements OnInit {
       take(1)
     ).subscribe()
   }
+
+  
+  cancel() {
+    this.modal.dismiss(null, 'cancel');
+  }
+
+  confirm() {
+    this.modal.dismiss(this.avatar, 'confirm');
+  }
+
+  onWillDismiss(event: Event) {
+    const ev = event as CustomEvent<OverlayEventDetail<string>>;
+    if (ev.detail.role === 'confirm') {
+        this.avatar = this.avatarSelected;
+        this.authService.updateAvatar(this.avatar).pipe(
+          take(1),
+          tap(() => {
+            localStorage.setItem('avatar', this.avatar)
+          }),
+        ).subscribe()
+    }
+  }
+
+  onClick(objectClicked : string) {
+    this.avatarSelected = objectClicked;
+  }
+
 }

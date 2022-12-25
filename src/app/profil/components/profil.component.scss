@@ -21,3 +21,22 @@ ion-label {
     width: 100%;
     justify-content: center;
 }
+
+.container-avatar {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    .avatar {
+        opacity: 0.35;
+        margin: 5px;
+        width: 75px;
+        height: 75px;
+        &:hover {
+            opacity: 1;
+        }
+    }
+}

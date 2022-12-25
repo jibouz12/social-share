@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { TabsPageRoutingModule } from './tabs-routing.module';
 
 import { TabsPage } from './tabs.page';
-import { SpinModule } from '../spin/spin.module';
 
 @NgModule({
   imports: [
@@ -14,7 +13,6 @@ import { SpinModule } from '../spin/spin.module';
     CommonModule,
     FormsModule,
     TabsPageRoutingModule,
-    SpinModule
   ],
   declarations: [TabsPage]
 })

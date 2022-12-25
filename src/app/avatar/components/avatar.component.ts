@@ -25,9 +25,8 @@ export class AvatarComponent implements OnInit {
         localStorage.setItem('avatar', e)
       }),
       tap(() => {
-        this.router.navigateByUrl('profil').then(() => {
-          location.reload();
-        })
+        this.router.navigateByUrl('profil')
+
       }),
     ).subscribe()
   }
