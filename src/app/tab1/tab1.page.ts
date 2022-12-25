@@ -16,14 +16,14 @@ export class Tab1Page {
   latitude!: number;
   longitude!: number;
   spinner!: boolean;
-  test!: string
 
   constructor(private geolocation: Geolocation,
               private authService : AuthService) {}
 
   
   ionViewDidEnter() {
-    this.test = 'test'
+    this.getLocation();
+    this.getUsersClose();
   }
 
 
@@ -31,7 +31,8 @@ export class Tab1Page {
 //////////////////////////////////////
   handleRefresh(event : any) {
     setTimeout(() => {
-      this.getLocation()
+      this.getLocation();
+      this.getUsersClose();
       event.target.complete();
     }, 1500);
   };
@@ -42,16 +43,18 @@ export class Tab1Page {
     this.geolocation.getCurrentPosition().then((resp) => {
       this.latitude = resp.coords.latitude;
       this.longitude = resp.coords.longitude;
-     }).catch((error) => {
+    }).catch((error) => {
        console.log('Error getting location', error);
-     });
+    });
+  }
 
-     this.authService.modifyGPS(this.latitude, this.longitude).pipe(
+  getUsersClose() {
+    this.authService.modifyGPS(this.latitude, this.longitude).pipe(
       take(1),
       tap(() => {
         this.post$ = this.authService.closeGPS(this.latitude, this.longitude)
       })
-     ).subscribe();
+    ).subscribe();
   }
 
 

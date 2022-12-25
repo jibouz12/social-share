@@ -4,8 +4,6 @@ import { IonModal, RangeCustomEvent } from '@ionic/angular';
 import { RangeValue } from '@ionic/core';
 import { take, tap } from 'rxjs';
 import { OverlayEventDetail } from '@ionic/core/components';
-import { Router } from '@angular/router';
-
 
 
 @Component({
@@ -19,8 +17,7 @@ export class ProfilComponent implements OnInit {
   moveEnd!: RangeValue;
   @ViewChild(IonModal) modal!: IonModal;
 
-  constructor(private authService : AuthService,
-              private router : Router) { }
+  constructor(private authService : AuthService) { }
 
   ngOnInit() {
     this.avatar = this.authService.getUserAvatar();

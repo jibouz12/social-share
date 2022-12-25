@@ -6,5 +6,5 @@
     >
     </ion-refresher-content>
   </ion-refresher>
-  <p>{{test}}</p>
+  <app-post *ngFor="let postElement of (post$ | async) as post"  [post]="postElement"></app-post>
 </ion-content>
