@@ -16,13 +16,14 @@ export class Tab1Page {
   latitude!: number;
   longitude!: number;
   spinner!: boolean;
+  test!: string
 
   constructor(private geolocation: Geolocation,
               private authService : AuthService) {}
 
   
   ionViewDidEnter() {
-    this.getLocation()
+    this.test = 'test'
   }
 
 
