@@ -24,7 +24,6 @@ export class Tab1Page implements OnInit {
     this.spinner = true;
   }
 
-
   ionViewDidEnter() {
     this.spinner = false;
     this.getLocation();
