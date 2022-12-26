@@ -55,7 +55,7 @@ export class SignupComponent implements OnInit {
       take(1),
       switchMap(() => this.auth.loginUser(email, password)),
       tap(() => {
-        this.router.navigateByUrl('');
+        this.router.navigateByUrl('spin');
       }),
       catchError(error => {
         this.errorMsg = error.message;

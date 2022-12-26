@@ -1,3 +1,9 @@
+.logo{
+    position: fixed;
+    top: 25px;
+    width: 25%;
+}
+
 .container {
     height: 100%;
     display: flex;
@@ -14,7 +20,7 @@
         text-align: center;
     }
     .inscription-container {
-        position: absolute;
+        position: fixed;
         bottom: 50px;
         text-align: center;
     }
