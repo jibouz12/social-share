@@ -7,14 +7,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./spin.component.scss'],
 })
 export class SpinComponent implements OnInit {
-  spinner!: boolean;
 
   constructor(private router : Router) { }
 
   ngOnInit() {
-    this.spinner = true;
     setTimeout(() => {
-      this.router.navigateByUrl('feed')
+      this.router.navigateByUrl('')
     }, 2000);
   }
 

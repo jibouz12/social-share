@@ -6,10 +6,7 @@
     >
     </ion-refresher-content>
   </ion-refresher>
-  <div *ngIf="spinner === true" class="container-spinner">
-    <ion-spinner name="bubbles"></ion-spinner>
-  </div>
-  <ion-item button *ngFor="let post of (post$ | async)" class="card" color="tertiary" href="https://instagram.com/{{ post.insta }}">
+  <ion-item button *ngFor="let post of (post$ | async)" class="card" href="https://instagram.com/{{ post.insta }}">
     <ion-avatar class="avatar" slot="start">
       <img alt="avatar" src="assets/images/{{ post.avatar }}.svg" />
     </ion-avatar>
