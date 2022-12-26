@@ -11,7 +11,8 @@ import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
-import { AvatarModule } from './avatar/avatar.module';
+import { Tab1PageModule } from './tab1/tab1.module';
+import { Tab3PageModule } from './tab3/tab3.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { AvatarModule } from './avatar/avatar.module';
     HttpClientModule,
     CoreModule,
     AuthModule,
-    AvatarModule,
+    Tab1PageModule,
+    Tab3PageModule,
   ],
 
   providers: [

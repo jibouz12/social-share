@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { Tab1Page } from '../tab1/tab1.page';
+import { Tab3Page } from '../tab3/tab3.page';
 import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
@@ -8,12 +10,10 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: '',
-        loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+        path: '', component: Tab1Page
       },
       {
-        path: 'profil',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+        path: 'profil', component: Tab3Page
       },
     ]
   },

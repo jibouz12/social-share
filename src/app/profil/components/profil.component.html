@@ -4,7 +4,7 @@
       <img alt="avatar" src="assets/images/{{ avatar }}.svg"/>
     </ion-avatar>
   </div>
-  <ion-range color="secondary" [min]="1" [value]="moveEnd" [max]="50" (ionKnobMoveEnd)="onIonKnobMoveEnd($event)"></ion-range>
+  <ion-range color="tertiary" [min]="1" [value]="moveEnd" [max]="50" (ionKnobMoveEnd)="onIonKnobMoveEnd($event)"></ion-range>
   <ion-label>Distance : {{ moveEnd }} km</ion-label>
 
   <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
@@ -12,10 +12,10 @@
       <ion-header>
         <ion-toolbar>
           <ion-buttons slot="start">
-            <ion-button (click)="cancel()">Cancel</ion-button>
+            <ion-button color="danger" (click)="cancel()">Cancel</ion-button>
           </ion-buttons>
           <ion-buttons slot="end">
-            <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+            <ion-button color="success" (click)="confirm()" [strong]="true">Confirm</ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>

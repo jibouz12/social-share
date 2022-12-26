@@ -7,7 +7,7 @@
     </ion-refresher-content>
   </ion-refresher>
 
-  <ion-item button *ngFor="let post of (post$ | async)" class="card" color="secondary" href="https://instagram.com/{{ post.insta }}">
+  <ion-item button *ngFor="let post of (post$ | async)" class="card" color="tertiary" href="https://instagram.com/{{ post.insta }}">
     <ion-avatar class="avatar" slot="start">
       <img alt="avatar" src="assets/images/{{ post.avatar }}.svg" />
     </ion-avatar>
