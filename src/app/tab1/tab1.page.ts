@@ -46,7 +46,7 @@ export class Tab1Page {
     this.geolocation.getCurrentPosition().then((resp) => {
       this.latitude = resp.coords.latitude;
       this.longitude = resp.coords.longitude;
-      this.post$ = this.authService.closeGPS(this.latitude, this.longitude);
+      this.post$ = this.authService.closeGPS(this.latitude, this.longitude)
     }).catch((error) => {
        console.log('Error getting location', error);
     });
@@ -57,7 +57,6 @@ export class Tab1Page {
       take(1),
     ).subscribe();
   }
-
 
 }
 
